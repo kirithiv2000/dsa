@@ -44,7 +44,7 @@ print(move0and1s(a))
 
 
 
-def helper(array,start,end):
+def helper(array,start,end):  #30MIN
     p = array[end]
     i = start
     j = end - 1
@@ -58,7 +58,7 @@ def helper(array,start,end):
     return j
     
 
-def quickSort(array,start,end):
+def quickSort(array,start,end):   #10 MIN
     if start<end:
         pi = helper(array,start,end)# call 
         quickSort(array,start,pi-1)
