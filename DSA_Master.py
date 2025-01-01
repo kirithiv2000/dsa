@@ -113,3 +113,89 @@ print(a)
 
 
 
+
+        
+class Node:
+    def __init__(self,data=None,next=None):
+        self.data = data
+        self.next = next
+
+
+class LinkedList:
+    def __init__(self,head=None):
+        self.head = head
+    def construct(self,array):
+        for element in array:
+            currentNode = Node(element)
+            
+            if not self.head:
+                self.head = currentNode
+            else:
+                prevNode.next = currentNode 
+            prevNode = currentNode
+    def pretyPrint(self):
+        current = self.head
+        while current.next:
+            print(current.data,end=" => ")
+            current = current.next
+        print(current.data)
+    
+    def deleteAspecificData(self,data):
+        if self.head.data == data:
+            self.head = self.head.next
+            return 
+        curr = self.head
+        while curr.next:
+            if curr.data == data:
+                prev.next = curr.next
+            prev = curr
+            curr = curr.next
+        if curr.data == data:
+            prev.next = curr.next
+    
+    def reverse(self):
+        curr = self.head
+        prev = None
+        while curr.next:
+            next = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next
+        curr.next = prev
+        self.head = curr
+    
+    def checkForCycle(self):
+        slow = self.head
+        fast = slow
+        start = True
+        while slow.next and fast.next and fast.next.next:
+            if (not start) and fast == slow:
+                return True
+            start = False
+            slow = slow.next
+            fast = fast.next.next
+        return False
+        
+    def get(self,data):
+        curr = self.head 
+        while curr.next:
+            if curr.data == data:
+                return curr
+        if curr.data == data:
+            return curr
+        return Node(-1)
+
+a = [11, 22, 31, 33, 56, 57, 77, 99]
+
+l = LinkedList()
+l.construct(a)
+l.pretyPrint()
+# l.deleteAspecificData(11)
+l.reverse()
+l.pretyPrint()
+print(l.checkForCycle())
+l.get(99).next = l.head
+print(l.checkForCycle())
+
+
+
