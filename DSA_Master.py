@@ -72,5 +72,44 @@ print(a)
 
 
 
+def mergeSort(a):  # 30 min
+    n = len(a)
+    # print(a)
+    if n<=1:
+        return 
+    left = a[:n//2]
+    right = a[n//2:]
+    
+    mergeSort(left)
+    mergeSort(right)
+    ans = []
+    i = 0
+    j = 0
+    n = len(left)
+    m = len(right)
+    while i<n and j < m:
+        if left[i]<=right[j]:
+            ans.append(left[i])
+            i += 1
+        else:
+            ans.append(right[j])
+            j += 1
+    while i < n:
+        ans.append(left[i])
+        i+=1
+    while j< m:
+        ans.append(right[j])
+        j+=1
+    for k in range(n+m):
+        a[k] = ans[k]
+
+
+
+
+
+a = [22, 11, 77, 99, 33, 56, 31, 57] 
+mergeSort(a)
+print(a)
+
 
 
