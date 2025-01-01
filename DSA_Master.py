@@ -41,3 +41,36 @@ def move0and1s(array):  # 11min
 a = [1,1,1,2,2,0,0,1,2,0,2,1]
 print(move0and1s(a))
 
+
+
+
+def helper(array,start,end):
+    p = array[end]
+    i = start
+    j = end - 1
+    while i<j:
+        while array[i]<p:
+            i+=1
+        while array[j]>p:
+            j-=1
+        array[i],array[j] = array[j],array[i]
+    array[end],array[j] = array[j],array[end]
+    return j
+    
+
+def quickSort(array,start,end):
+    if start<end:
+        pi = helper(array,start,end)# call 
+        quickSort(array,start,pi-1)
+        quickSort(array,pi+1,end)
+        
+
+a = [22,11,77,99,33,56,31,57]
+n = len(a)-1
+quickSort(a,0,n)
+print(a)
+
+
+
+
+
